@@ -8,7 +8,7 @@ const app = express();
 
 const server = http.createServer(app);
 
-const io = socketIo(server, { cors: { orgin: "https://ivanplease.github.io/harcmiliada-front/" } });
+const io = socketIo(server, { cors: { orgin: "*" } });
 
 io.on("connect", (socket) => {
 
