@@ -30,7 +30,7 @@ io.on("connect", (socket) => {
     });
 
     socket.on('pickSide', (data) => {
-        io.to("boards").emit('recieveCommand', data);
+        io.to("boards").emit('recieveCommand', {type: "pickSide", side: data});
     })
 
 });
