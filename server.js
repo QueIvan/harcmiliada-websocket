@@ -29,6 +29,10 @@ io.on("connect", (socket) => {
         });
     });
 
+    socket.on('pickSide', (data) => {
+        io.to("boards").emit('recieveCommand', data);
+    })
+
 });
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
