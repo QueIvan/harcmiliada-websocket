@@ -29,6 +29,11 @@ io.on("connect", (socket) => {
 		socket.to(roomName).emit("setWrongAnswersCount", data);
 	});
 
+	socket.on("setAnswerer", (gameId, side) => {
+		socket.to(`console-&${gameId}`).emit("setAnswerer", side);
+		socket.to(`presenter-&${gameId}`).emit("setAnswerer", side);
+	});
+
 	socket.on("reloadBoard", (roomName) => {
 		socket.to(roomName).emit("reloadBoard");
 	});
