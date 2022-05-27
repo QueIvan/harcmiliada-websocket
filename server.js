@@ -29,11 +29,11 @@ io.on("connect", (socket) => {
 		socket.to(roomName).emit("setWrongAnswersCount", data);
 	});
 
-	socket.on("setAnswerer", (gameId, side) => {
-		console.log(gameId, side);
-		socket.to(`console-&${gameId}`).emit("setAnswerer", side);
-		socket.to(`presenter-&${gameId}`).emit("setAnswerer", side);
-		socket.to(`answerer-&${gameId}`).emit("setAnswerer", side);
+	socket.on("setAnswerer", (data) => {
+		console.log(data);
+		socket.to(`console-&${data.gameId}`).emit("setAnswerer", data.side);
+		socket.to(`presenter-&${data.gameId}`).emit("setAnswerer", data.side);
+		socket.to(`answerer-&${data.gameId}`).emit("setAnswerer", data.side);
 	});
 
 	socket.on("reloadBoard", (roomName) => {
