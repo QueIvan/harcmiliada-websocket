@@ -30,6 +30,7 @@ io.on("connect", (socket) => {
 	});
 
 	socket.on("setAnswerer", (gameId, side) => {
+		console.log(gameId, side);
 		socket.to(`console-&${gameId}`).emit("setAnswerer", side);
 		socket.to(`presenter-&${gameId}`).emit("setAnswerer", side);
 		socket.to(`answerer-&${gameId}`).emit("setAnswerer", side);
