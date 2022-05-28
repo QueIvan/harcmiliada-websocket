@@ -30,10 +30,13 @@ io.on("connect", (socket) => {
 	});
 
 	socket.on("setAnswerer", (data) => {
-		console.log(data);
 		socket.to(`console-&${data.gameId}`).emit("setAnswerer", data.side);
 		socket.to(`presenter-&${data.gameId}`).emit("setAnswerer", data.side);
 		socket.to(`answerer-&${data.gameId}`).emit("setAnswerer", data.side);
+	});
+
+	socket.on("justKeepSwimming", () => {
+		console.log("[SERVER] 'justKeepSwimming' event called");
 	});
 
 	socket.on("reloadBoard", (roomName) => {
