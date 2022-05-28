@@ -35,9 +35,7 @@ io.on("connect", (socket) => {
 		socket.to(`answerer-&${data.gameId}`).emit("setAnswerer", data.side);
 	});
 
-	socket.on("justKeepSwimming", () => {
-		console.log("[SERVER] 'justKeepSwimming' event called");
-	});
+	socket.on("justKeepSwimming", () => {});
 
 	socket.on("reloadBoard", (roomName) => {
 		socket.to(roomName).emit("reloadBoard");
